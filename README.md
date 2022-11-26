@@ -1,4 +1,4 @@
-# MLH BCHACKS 4.0: Sick!
+# MLH BCHACKS 4.0: physicAIn!
 This repository will be used by all participating team members to work collaboratively on our BC HACKS project.
 ### Team Members:
 - Zeyad Elganainy
