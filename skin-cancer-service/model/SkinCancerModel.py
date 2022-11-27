@@ -50,7 +50,7 @@ def get_data(df, im_width, dict):
         im = im.resize((im_width, im_width))
         im_array = asarray(im)
         x[i, :] = im_array.reshape(1, -1)
-        y[i,0] = dict[df[cancer_column][i]]
+        y[i, 0] = dict[df[cancer_column][i]]
 
     return x, y
 
@@ -58,11 +58,11 @@ def get_data(df, im_width, dict):
 x, y = get_data(file_path_to_cancer_df, im_width, class_dict)
 # train_samples = 9015
 
+
 def get_training_testing_data():
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33)
 
     return [x_train, x_test, y_train, y_test]
-
 
 
 current_directory = Path(os.getcwd())
