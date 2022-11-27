@@ -52,6 +52,7 @@ public class httpRequester extends AppCompatActivity {
                 model = null;
         }
         textView = findViewById(R.id.textView5);
+        textView.setText("No");
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme("http")
                 .host("34.125.63.206")
