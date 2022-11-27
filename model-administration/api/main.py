@@ -1,7 +1,7 @@
 import requests
 
 from flask import Flask
-from flask_restful import Api, Resource, reqparse, fields, marshal_with
+from flask_restful import Api, Resource, reqparse
 
 app = Flask(__name__)
 api = Api(app)
@@ -42,8 +42,9 @@ class ModelAdministration(Resource):
         endpoint = self.MODEL_TO_ENDPOINT[model]
 
         url = "http://127.0.0.1" + ":" + port + endpoint
+        print(url)
         response = requests.get(
-            url, {"image": img}
+            url, {"model": model, "image": img}
         )
 
         return response, 200
