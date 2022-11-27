@@ -1,6 +1,11 @@
+import base64
+import io
+
 from flask import Flask
-from flask_restful import Api, Resource, reqparse, fields, marshal_with
+from flask_restful import Api, Resource, reqparse
 from CavityModel import CavityModel
+
+from PIL import Image
 
 app = Flask(__name__)
 api = Api(app)
@@ -10,18 +15,18 @@ PORT = 5003
 
 cavity_model = CavityModel()
 
-skin_cancer_put_args = reqparse.RequestParser()
+image_arg = "image"
 
-args_dict = {
-    "image": fields.String,
-}
+cavity_get_args = reqparse.RequestParser()
+cavity_get_args.add_argument(image_arg)
 
 
 class CavityServer(Resource):
-    @marshal_with(args_dict)
     def get(self):
-        args = skin_cancer_put_args.parse_args()
-        img: str = args["image"]
+        args = cavity_get_args.parse_args()
+        img: str = args[image_arg]
+        imgdata = base64.b64decode(img)
+        img = Image.open(io.BytesIO(imgdata))
         is_cavity = cavity_model.get_is_cavity(img)
         return is_cavity, 200
 

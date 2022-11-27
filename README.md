@@ -13,6 +13,7 @@ More details will be provided tomorrow.
 [^3]: https://www.kaggle.com/datasets/kondwani/eye-disease-dataset
 
 ### Endpoints and ports
+- model-administration: /admin          (port=5000)
 - skin-cancer-service:  /skin-cancer    (port=5001)
 - eye-disease-service:  /a-eye          (port=5002)
 - cavity-service:       /cavity         (port=5003)
