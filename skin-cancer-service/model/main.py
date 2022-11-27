@@ -2,7 +2,7 @@ import base64
 import io
 
 from flask import Flask
-from flask_restful import Api, Resource, reqparse, fields, marshal_with
+from flask_restful import Api, Resource, reqparse
 from SkinCancerModel import SkinCancerModel
 
 from PIL import Image
@@ -15,21 +15,21 @@ PORT = 5001
 
 skin_cancer_model = SkinCancerModel()
 
-skin_cancer_put_args = reqparse.RequestParser()
-
-args_dict = {
-    "image": fields.String,
-}
+image_arg = "image"
+skin_cancer_get_args = reqparse.RequestParser()
+skin_cancer_get_args.add_argument(image_arg)
 
 
 class SkinCancerServer(Resource):
-    @marshal_with(args_dict)
     def get(self):
-        args = skin_cancer_put_args.parse_args()
-        img: str = args["image"]
+        args = skin_cancer_get_args.parse_args()
+        img: str = args[image_arg]
+        print("hi")
         imgdata = base64.b64decode(img)
         img = Image.open(io.BytesIO(imgdata))
         cancer = skin_cancer_model.get_skin_cancer(img)
+        print("hi")
+        print(cancer)
         return cancer, 200
 
 

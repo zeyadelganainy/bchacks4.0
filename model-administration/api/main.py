@@ -42,7 +42,6 @@ class ModelAdministration(Resource):
         endpoint = self.MODEL_TO_ENDPOINT[model]
 
         url = "http://127.0.0.1" + ":" + port + endpoint
-        print(url)
         response = requests.get(
             url, {"image": img}
         )

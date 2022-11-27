@@ -156,3 +156,5 @@ cython_debug/
 *.jpg
 *.csv
 *.jpeg
+
+settings.json
