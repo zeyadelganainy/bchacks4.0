@@ -2,12 +2,13 @@ import pytest
 import requests
 
 BASE = "http://localhost"
-PORT = 5001
-ENDPOINT = "/skin-cancer"
+PORT = 5000
+ENDPOINT = "/admin"
 
 BASE_URL = BASE + ":" + str(PORT)
 ENDPOINT_URL = BASE_URL + ENDPOINT
 
+model = "cavity"
 image = ('''
 iVBORw0KGgoAAAANSUhEUgAAAFwAAABXCAIAAAAGSrXMAAAAAXNSR0IArs4c6QAAAANzQklUCAgI
 2+FP4AAAIABJREFUeJyFvF2PJFlyLGbmfiKzqrp7ZnaGuySXl5AI3PsoCHoQIOgX6Ek/Ur9Gj3rj
@@ -193,7 +194,7 @@ qeOUdVes/kw0wB1An0/S09je3Oi4uAuem/xsVAYAphXGOnysg/luFICdT6pqgoQSDPaZbwPsHqUF
 qHeokqtsze43V2cYESO32LK19jKrt0EESRCLtqqVRNlba328V60BW6vr7qhSHxY3/1/6nYKkaMs2
 JwAAAABJRU5ErkJggg==''')
 
-params = {"image": image}
+params = {"image": image, "model": model}
 headers = {'Content-type': 'application/json'}
 response = requests.get(ENDPOINT_URL, params=params, headers=headers)
 print(response.json())
