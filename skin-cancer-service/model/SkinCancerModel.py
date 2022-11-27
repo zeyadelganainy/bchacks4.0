@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+from numpy import asarray
 import pandas as pd
 import pickle
 
@@ -15,6 +16,8 @@ current_directory = Path(os.getcwd())
 data_folder = "data"
 metadata_filename = "HAM10000_metadata.csv"
 metadata_file_path = current_directory / data_folder / metadata_filename
+
+im_width = 32
 
 metadata = pd.read_csv(metadata_file_path)
 
@@ -75,7 +78,7 @@ class SkinCancerModel:
         self.accuracy = accuracy
 
     def get_skin_cancer(self, image: Image) -> str:
-        im = image.resize((im_width))
+        im = image.resize((im_width, im_width))
         image_arr = asarray(im)
         predicted_cancer_str: str = self.model.predict(image_arr)
         predicted_cancer = SkinCancer(predicted_cancer_str)

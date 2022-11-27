@@ -102,7 +102,7 @@ class CavityModel:
         self.accuracy = accuracy
 
     def get_is_cavity(self, image: Image):
-        im = image.resize((im_width))
+        im = image.resize((im_width, im_width))
         image_arr = asarray(im)
         is_cavity: int = self.model.predict(image_arr)
         is_cavity_str = "yes" if is_cavity else "no"
