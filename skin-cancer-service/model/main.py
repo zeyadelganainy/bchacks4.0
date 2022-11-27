@@ -19,7 +19,7 @@ class SkinCancerServer(Resource):
     def get(self):
         args = skin_cancer_put_args.parse_args()
         img: str = args['image']
-        cancer = skin_cancer_model.get_cancer(img)
+        cancer = skin_cancer_model.get_skin_cancer(img)
         return cancer, 200
 
 

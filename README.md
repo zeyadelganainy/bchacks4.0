@@ -3,4 +3,5 @@ This repository will be used by all participating team members to work collabora
 
 
 ### For Python Developers
-- install [poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
+Run the following command:
+-    ```pip install -r requirements.txt```
