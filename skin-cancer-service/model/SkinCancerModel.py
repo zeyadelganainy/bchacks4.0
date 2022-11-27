@@ -3,7 +3,6 @@ from pathlib import Path
 
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
 
 from SkinCancer import SkinCancer
 
@@ -19,16 +18,19 @@ image_id_column = "image_id"
 image_file_path = "image_file_path"
 
 image_ids = metadata[image_id_column]
-image_file_paths = pd.DataFrame([
-    current_directory / data_folder / (image_id + ".csv")
-    for image_id in image_ids
-], columns=[image_file_path])
+image_file_paths = pd.DataFrame(
+    [
+        current_directory / data_folder / (image_id + ".csv")
+        for image_id in image_ids
+    ],
+    columns=[image_file_path],
+)
 
 cancer = metadata[cancer_column]
 file_path_to_cancer_df = pd.concat(
     [image_file_paths, cancer],
     axis=1,
-    join='inner'
+    join="inner"
 )
 
 
