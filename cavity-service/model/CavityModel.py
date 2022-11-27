@@ -1,5 +1,4 @@
 import os
-from typing import Literal
 
 import numpy as np
 from numpy import asarray
@@ -102,7 +101,9 @@ class CavityModel:
         self.model = model
         self.accuracy = accuracy
 
-    def get_is_cavity(self, image: str) -> Literal["yes", "no"]:
-        is_cavity: float = self.model.predict(image)
+    def get_is_cavity(self, image: Image):
+        im = image.resize((im_width, im_width))
+        image_arr = asarray(im)
+        is_cavity: int = self.model.predict(image_arr)
         is_cavity_str = "yes" if is_cavity else "no"
         return is_cavity_str

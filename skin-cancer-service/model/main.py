@@ -1,6 +1,11 @@
+import base64
+import io
+
 from flask import Flask
 from flask_restful import Api, Resource, reqparse, fields, marshal_with
 from SkinCancerModel import SkinCancerModel
+
+from PIL import Image
 
 app = Flask(__name__)
 api = Api(app)
@@ -22,6 +27,8 @@ class SkinCancerServer(Resource):
     def get(self):
         args = skin_cancer_put_args.parse_args()
         img: str = args["image"]
+        imgdata = base64.b64decode(img)
+        img = Image.open(io.BytesIO(imgdata))
         cancer = skin_cancer_model.get_skin_cancer(img)
         return cancer, 200
 
