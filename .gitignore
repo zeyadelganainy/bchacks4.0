@@ -155,3 +155,4 @@ cython_debug/
 # ignore all metadata and images used to train the model
 *.jpg
 *.csv
+*.jpeg

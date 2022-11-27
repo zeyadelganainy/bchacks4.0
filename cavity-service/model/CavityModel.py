@@ -22,7 +22,7 @@ def get_data(folder, im_width, label):
     y = np.empty((len(files_array), 1))
 
     for i in range(len(files_array)):
-        path = folder + files_array[i]
+        path = folder / files_array[i]
         im = Image.open(path).convert("L")
         im = im.resize((im_width, im_width))
         im_array = asarray(im)
@@ -33,8 +33,8 @@ def get_data(folder, im_width, label):
 
 
 def get_training_data():
-    folder_training_0 = "data/teeth_dataset/training/without_caries/"
-    folder_training_1 = "data/teeth_dataset/training/caries/"
+    folder_training_0 = current_directory / "data" / "training" / "without_caries"
+    folder_training_1 = current_directory / "data" / "training" / "caries"
 
     # training
     x_train_0 = np.empty((len(os.listdir(folder_training_0)), im_width**2))
@@ -52,8 +52,8 @@ def get_training_data():
 
 
 def get_testing_data():
-    folder_testing_0 = "data/teeth_dataset/testing/without_caries/"
-    folder_testing_1 = "data/teeth_dataset/testing/caries/"
+    folder_testing_0 = current_directory / "data" / "testing" / "without_caries"
+    folder_testing_1 = current_directory / "data" / "testing" / "caries"
 
     # # # #testing
     x_test_0 = np.empty((len(os.listdir(folder_testing_0)), im_width**2))
@@ -71,7 +71,7 @@ def get_testing_data():
 
 
 current_directory = Path(os.getcwd())
-model_file_path = current_directory / "model.pickle"
+model_file_path = current_directory / "model" / "model.pickle"
 
 
 class CavityModel:
@@ -83,19 +83,20 @@ class CavityModel:
         model: LogisticRegression
         accuracy: float
         try:
-            with open(model_file_path, "rb") as f:
+            with open(str(model_file_path), "rb") as f:
                 [model, accuracy] = pickle.load(f)
 
-        except FileExistsError:
+        except (FileExistsError, FileNotFoundError):
             [x_train, y_train] = get_training_data()
             [x_test, y_test] = get_testing_data()
 
+            model = LogisticRegression()
             model.fit(x_train, y_train)
-            y_pred = self.model.predict(x_test)
+            y_pred = model.predict(x_test)
             accuracy = accuracy_score(y_test, y_pred)
             print(confusion_matrix(y_test, y_pred))
 
-            with open("model_file_path", "wb") as f:
+            with open(model_file_path, "wb") as f:
                 pickle.dump([model, accuracy], f)
 
         self.model = model
