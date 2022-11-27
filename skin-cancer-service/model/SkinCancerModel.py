@@ -87,7 +87,6 @@ class SkinCancerModel:
 
             y_pred = model.predict(x_test)
             accuracy = accuracy_score(y_test, y_pred)
-            print(confusion_matrix(y_test, y_pred))
 
             with open(model_file_path, "wb") as f:
                 pickle.dump([model, accuracy], f)
