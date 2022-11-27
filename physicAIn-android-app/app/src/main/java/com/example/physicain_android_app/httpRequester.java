@@ -53,7 +53,7 @@ public class httpRequester extends AppCompatActivity {
         textView = findViewById(R.id.textView5);
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme("http")
-                .host("34.125.63.206")
+                .host("34.125.63.206:5000")
                 .addPathSegment("admin")
                 .addQueryParameter("model", model)
                 .addQueryParameter("image", image)
