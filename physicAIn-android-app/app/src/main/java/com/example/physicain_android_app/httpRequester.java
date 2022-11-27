@@ -50,7 +50,6 @@ public class httpRequester extends AppCompatActivity {
             default:
                 model = null;
         }
-        String url = "http://34.125.63.206/admin";
         textView = findViewById(R.id.textView5);
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme("http")
@@ -59,7 +58,7 @@ public class httpRequester extends AppCompatActivity {
                 .addQueryParameter("model", model)
                 .addQueryParameter("image", image)
                 .build();
-        Request request = new Request.Builder().url(url).get().build();
+        Request request = new Request.Builder().url(httpUrl).get().build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {

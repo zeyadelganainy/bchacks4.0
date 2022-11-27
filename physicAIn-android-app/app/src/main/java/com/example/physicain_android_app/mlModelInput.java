@@ -34,7 +34,6 @@ public class mlModelInput extends AppCompatActivity {
         uploadedImage = findViewById(R.id.imgGallery);
         gallery = findViewById(R.id.button2);
         submit = findViewById(R.id.button4);
-        textView = findViewById(R.id.textView6);
 
     }
     public void onGalleryClick(View view){
