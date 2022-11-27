@@ -38,6 +38,7 @@ public class httpRequester extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_http_requester);
         OkHttpClient client = new OkHttpClient();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -53,7 +54,8 @@ public class httpRequester extends AppCompatActivity {
         textView = findViewById(R.id.textView5);
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme("http")
-                .host("34.125.63.206:5000")
+                .host("34.125.63.206")
+                .port(5000)
                 .addPathSegment("admin")
                 .addQueryParameter("model", model)
                 .addQueryParameter("image", image)
