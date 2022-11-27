@@ -22,7 +22,10 @@ image_file_path = "image_file_path"
 
 image_ids = metadata[image_id_column]
 image_file_paths = pd.DataFrame(
-    [current_directory / data_folder / (image_id + ".csv") for image_id in image_ids],
+    [
+        current_directory / data_folder / (image_id + ".csv") 
+        for image_id in image_ids
+    ],
     columns=[image_file_path],
 )
 
@@ -54,7 +57,7 @@ class SkinCancerModel:
             with open(model_file_path, "rb") as f:
                 [model, accuracy] = pickle.load(f)
 
-        except FileExistsError:
+        except (FileExistsError, FileNotFoundError):
             [x_train, y_train] = get_training_data()
             [x_test, y_test] = get_testing_data()
 
@@ -63,7 +66,7 @@ class SkinCancerModel:
             accuracy = accuracy_score(y_test, y_pred)
             print(confusion_matrix(y_test, y_pred))
 
-            with open("model_file_path", "wb") as f:
+            with open(model_file_path, "wb") as f:
                 pickle.dump([model, accuracy], f)
 
         self.model = model
