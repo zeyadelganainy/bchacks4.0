@@ -1,16 +1,19 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse, fields, marshal_with
-from . import SkinCancerModel
+from SkinCancerModel import SkinCancerModel
 
 app = Flask(__name__)
 api = Api(app)
+
+ENDPOINT = '/skin-cancer'
+PORT = 5001
 
 skin_cancer_model = SkinCancerModel()
 
 skin_cancer_put_args = reqparse.RequestParser()
 
 args_dict = {
-	'image': fields.String,
+    'image': fields.String,
 }
 
 
@@ -23,7 +26,7 @@ class SkinCancerServer(Resource):
         return cancer, 200
 
 
-api.add_resource(SkinCancerServer, "/skin-cancer")
+api.add_resource(SkinCancerServer, ENDPOINT)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="localhost", port=PORT, debug=True)
