@@ -11,3 +11,12 @@ More details will be provided tomorrow.
 [^1]: https://www.kaggle.com/datasets/pushkar34/teeth-dataset.
 [^2]: https://www.kaggle.com/datasets/farjanakabirsamanta/skin-cancer-dataset.
 [^3]: https://www.kaggle.com/datasets/kondwani/eye-disease-dataset
+
+### Endpoints and ports
+- skin-cancer-service:  /skin-cancer    (port=5001)
+- eye-disease-service:  /a-eye          (port=5002)
+- cavity-service:       /cavity         (port=5003)
+
+### For Python Developers
+Run the following command:
+-    ```pip install -r requirements.txt```
