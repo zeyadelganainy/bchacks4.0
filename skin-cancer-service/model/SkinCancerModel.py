@@ -2,8 +2,6 @@ import os
 from pathlib import Path
 import numpy as np
 from numpy import asarray
-
-from numpy import asarray
 import pandas as pd
 import pickle
 from PIL import Image
@@ -11,8 +9,6 @@ from PIL import Image
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.model_selection import train_test_split
-
-from PIL import Image
 
 from SkinCancer import SkinCancer
 
@@ -23,23 +19,9 @@ metadata_file_path = current_directory / data_folder / metadata_filename
 
 im_width = 32
 
-metadata = pd.read_csv(metadata_file_path)
-
 cancer_column = "dx"
 image_id_column = "image_id"
 image_file_path = "image_file_path"
-
-image_ids = metadata[image_id_column]
-image_file_paths = pd.DataFrame(
-    [
-        current_directory / data_folder / (image_id + ".jpg") 
-        for image_id in image_ids
-    ],
-    columns=[image_file_path],
-)
-
-cancer = metadata[cancer_column]
-file_path_to_cancer_df = pd.concat([image_file_paths, cancer], axis=1, join="inner")
 
 classes = [i for i in range(7)]
 im_width = 32
@@ -63,18 +45,27 @@ def get_data(df, im_width, dict):
     return x, y
 
 
-x, y = get_data(file_path_to_cancer_df, im_width, class_dict)
-# train_samples = 9015
-
-
 def get_training_testing_data():
+    metadata = pd.read_csv(metadata_file_path)
+    image_ids = metadata[image_id_column]
+    image_file_paths = pd.DataFrame(
+        [
+            current_directory / data_folder / (image_id + ".jpg") 
+            for image_id in image_ids
+        ],
+        columns=[image_file_path],
+    )
+
+    cancer = metadata[cancer_column]
+    file_path_to_cancer_df = pd.concat([image_file_paths, cancer], axis=1, join="inner")
+    x, y = get_data(file_path_to_cancer_df, im_width, class_dict)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33)
 
     return [x_train, x_test, y_train, y_test]
 
 
 current_directory = Path(os.getcwd())
-model_file_path = current_directory / "model.pickle"
+model_file_path = current_directory / "model" / "model.pickle"
 
 
 class SkinCancerModel:
