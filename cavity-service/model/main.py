@@ -1,6 +1,11 @@
+import base64
+import io
+
 from flask import Flask
-from flask_restful import Api, Resource, reqparse, fields, marshal_with
+from flask_restful import Api, Resource, reqparse
 from CavityModel import CavityModel
+
+from PIL import Image
 
 app = Flask(__name__)
 api = Api(app)
@@ -20,6 +25,8 @@ class CavityServer(Resource):
     def get(self):
         args = cavity_get_args.parse_args()
         img: str = args[image_arg]
+        imgdata = base64.b64decode(img)
+        img = Image.open(io.BytesIO(imgdata))
         is_cavity = cavity_model.get_is_cavity(img)
         return is_cavity, 200
 
