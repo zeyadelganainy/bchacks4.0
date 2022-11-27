@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cyber_dark_blue"
+    tools:context=".chatbot">
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="305dp"
+        android:layout_height="129dp"
+        android:backgroundTint="@color/cyber_blue"
+        android:drawableLeft="@drawable/img_1"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:padding="40dp"
+        android:paddingTop="15sp"
+        android:text="Skin Cancer Classifier"
+        android:textColor="@color/cyber_dark_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="305dp"
+        android:layout_height="129dp"
+        android:backgroundTint="@color/cyber_blue"
+        android:drawableLeft="@drawable/img_3"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:padding="40dp"
+        android:paddingTop="15sp"
+        android:text="Tooth Cavity Detector"
+        android:textColor="@color/cyber_dark_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="305dp"
+        android:layout_height="129dp"
+        android:backgroundTint="@color/cyber_blue"
+        android:drawableLeft="@drawable/img"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:padding="40dp"
+        android:paddingTop="15sp"
+        android:text="Eye Disease Classifier (A_Eye)"
+        android:textColor="@color/cyber_dark_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
