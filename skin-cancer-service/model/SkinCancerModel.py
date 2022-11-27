@@ -2,7 +2,10 @@ import os
 from pathlib import Path
 
 import pandas as pd
+import pickle
+
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
 
 from SkinCancer import SkinCancer
 
@@ -19,19 +22,24 @@ image_file_path = "image_file_path"
 
 image_ids = metadata[image_id_column]
 image_file_paths = pd.DataFrame(
-    [
-        current_directory / data_folder / (image_id + ".csv")
-        for image_id in image_ids
-    ],
+    [current_directory / data_folder / (image_id + ".csv") for image_id in image_ids],
     columns=[image_file_path],
 )
 
 cancer = metadata[cancer_column]
-file_path_to_cancer_df = pd.concat(
-    [image_file_paths, cancer],
-    axis=1,
-    join="inner"
-)
+file_path_to_cancer_df = pd.concat([image_file_paths, cancer], axis=1, join="inner")
+
+
+def get_training_data():
+    pass
+
+
+def get_testing_data():
+    pass
+
+
+current_directory = Path(os.getcwd())
+model_file_path = current_directory / "model.pickle"
 
 
 class SkinCancerModel:
@@ -40,10 +48,28 @@ class SkinCancerModel:
 
     def __init__(self) -> None:
         # create the skin cancer machine-learning model
-        self.model = LogisticRegression()
-        # self.model.fit(x_train, y_train)
+        model: LogisticRegression
+        accuracy: float
+        try:
+            with open(model_file_path, "rb") as f:
+                [model, accuracy] = pickle.load(f)
 
-    def get_skin_cancer(self, image: str) -> SkinCancer:
+        except FileExistsError:
+            [x_train, y_train] = get_training_data()
+            [x_test, y_test] = get_testing_data()
+
+            model.fit(x_train, y_train)
+            y_pred = self.model.predict(x_test)
+            accuracy = accuracy_score(y_test, y_pred)
+            print(confusion_matrix(y_test, y_pred))
+
+            with open("model_file_path", "wb") as f:
+                pickle.dump([model, accuracy], f)
+
+        self.model = model
+        self.accuracy = accuracy
+
+    def get_skin_cancer(self, image: str) -> str:
         predicted_cancer_str: str = self.model.predict(image)
         predicted_cancer = SkinCancer(predicted_cancer_str)
-        return predicted_cancer
+        return predicted_cancer.name
