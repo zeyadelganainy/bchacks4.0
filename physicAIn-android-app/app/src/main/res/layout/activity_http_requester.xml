@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".httpRequester"
+    android:background="@color/cyber_dark_blue">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PREDICTION HERE"
+        android:textColor="@color/cyber_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Result:"
+        android:textColor="@color/cyber_blue"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.118" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="302dp"
+        android:layout_height="327dp"
+        android:textColor="@color/cyber_blue"
+        android:textSize="20sp"
+        android:text="
+        For cavities:
+        Yes = You have a cavity in your tooth
+        No = You do NOT have cavities in your tooh
+
+        For Skin Cancer:
+        You will receive 1 of 7 values:
+        AKIEC: Actinic keratoses and intraepithelial carcinoma
+        Bowen's disease (akiec)
+        BCC: basal cell carcinoma (bcc)
+        BKL: benign keratosis-like lesions
+        DF: dermatofibroma (df)
+        MEL: melanoma (mel)
+        NV: melanocytic nevi
+        VASC: vascular lesions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.91" />
+</androidx.constraintlayout.widget.ConstraintLayout>

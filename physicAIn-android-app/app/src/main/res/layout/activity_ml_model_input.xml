@@ -7,36 +7,50 @@
     tools:context=".mlModelInput"
     android:background="@color/cyber_dark_blue">
 
-    <ImageView
-        android:id="@+id/imgGallery"
-        android:layout_width="278dp"
-        android:layout_height="304dp"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="264dp"
+        android:layout_height="85dp"
+        android:gravity="center"
+        android:text="Your uploaded image will be displayed here"
+        android:textColor="@color/cyber_blue"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444"
+        app:layout_constraintVertical_bias="0.415" />
+
+    <ImageView
+        android:id="@+id/imgGallery"
+        android:layout_width="318dp"
+        android:layout_height="341dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="164dp"
+        android:layout_height="63dp"
         android:backgroundTint="@color/cyber_blue"
-        android:onClick="onClick"
-        android:text="Open Gallery"
+        android:onClick="onGalleryClick"
+        android:text="Upload Image"
         android:textColor="@color/cyber_dark_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.77" />
+        app:layout_constraintVertical_bias="0.751" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="382dp"
-        android:layout_height="138dp"
+        android:layout_width="386dp"
+        android:layout_height="105dp"
         android:text="Please attach an image that clearly shows the specified condition to be assessed"
         android:textColor="@color/cyber_blue"
         android:textSize="24sp"
@@ -49,14 +63,32 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="371dp"
-        android:layout_height="38dp"
+        android:layout_width="404dp"
+        android:layout_height="71dp"
         android:text="If you've selected the wrong image, please re-submit it before clicking continue"
         android:textColor="@color/cyber_blue"
-        android:textSize="16sp"
+        android:gravity="center"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="164dp"
+        android:layout_height="57dp"
+        android:text="Submit"
+        android:onClick="onSubmit"
+        android:backgroundTint="@color/cyber_blue"
+        android:textColor="@color/cyber_dark_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.869" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
