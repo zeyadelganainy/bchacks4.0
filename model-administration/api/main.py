@@ -3,9 +3,12 @@ import requests
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
 
+from Model import MODEL_TO_ENDPOINT, MODEL_TO_PORT
+
 app = Flask(__name__)
 api = Api(app)
 
+LOCALHOST = "http://127.0.0.1"
 ENDPOINT = "/admin"
 PORT = 5000
 
@@ -18,34 +21,19 @@ admin_get_args.add_argument(image_arg)
 
 class ModelAdministration(Resource):
 
-    MODEL_TO_PORT = {
-        "skin-cancer": "5001",
-        "eye-disease": "5002",
-        "cavity": "5003",
-    }
-
-    MODEL_TO_ENDPOINT = {
-        "skin-cancer": "/skin-cancer",
-        "eye-disease": "/a-eye",
-        "cavity": "/cavity",
-    }
-
     def get(self):
         args = admin_get_args.parse_args()
         model: str = args[model_arg]
         img: str = args[image_arg]
 
-        if model not in self.MODEL_TO_ENDPOINT:
+        if model not in MODEL_TO_ENDPOINT:
             return "invalid model", 404
-        
-        port = self.MODEL_TO_PORT[model]
-        endpoint = self.MODEL_TO_ENDPOINT[model]
 
-        url = "http://127.0.0.1" + ":" + port + endpoint
-        print(url)
-        response = requests.get(
-            url, {"model": model, "image": img}
-        )
+        port = MODEL_TO_PORT[model]
+        endpoint = MODEL_TO_ENDPOINT[model]
+
+        url = LOCALHOST + ":" + port + endpoint
+        response = requests.get(url, params={"model": model, "image": img})
 
         return response, 200
 
