@@ -1,0 +1,2 @@
+SKIN_CANCER = ""
+NO_SKIN_CANCER = ""
