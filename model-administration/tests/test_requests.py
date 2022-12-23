@@ -1,18 +1,30 @@
+from typing import Tuple
 import pytest
 import requests
 
-from ..api.Model import MODEL_TO_ENDPOINT, MODEL_TO_PORT
-from image import IMAGE
+from api import LOCALHOST, MODEL_TO_ENDPOINT, MODELS
+from api.ModelAdministration import ModelAdministration
 
-LOCALHOST = "http://127.0.0.1"
+from images.cavities import CAVITY, NO_CAVITY
+from images.eye_diseases import EYE_DISEASE, NO_EYE_DISEASE
+from images.skin_cancers import SKIN_CANCER, NO_SKIN_CANCER
 
 
-pytest.mark.parametrize("model", ["skin-cancer", "eye-disease", "cavity"])
+@pytest.fixture()
+def admin() -> ModelAdministration:
+    return ModelAdministration()
 
 
-def test_valid_request(model):
-    port = MODEL_TO_PORT[model]
-    endpoint = MODEL_TO_ENDPOINT[model]
-    url = LOCALHOST + ":" + port + endpoint
-    response = requests.get(url, params={"model": model, "image": IMAGE})
-    assert response is not None
+@pytest.mark.parametrize(
+    ["model", "image"],
+    MODELS,
+    [(SKIN_CANCER, NO_SKIN_CANCER), (EYE_DISEASE, NO_EYE_DISEASE), (CAVITY, NO_CAVITY)],
+)
+def test_valid_request(admin: ModelAdministration, images: Tuple[str], model: str):
+    url = admin.get_url_from_model(model)
+    assert url == LOCALHOST + MODEL_TO_ENDPOINT[model]
+
+    for image in images:
+        response = requests.get(url, {"image": image})
+
+        assert response.status_code == 200
