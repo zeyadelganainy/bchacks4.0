@@ -4,8 +4,6 @@ from api.ModelAdministration import ModelAdministration
 from flask import Flask
 from flask_restful import Api
 
-from Model import MODEL_TO_ENDPOINT, MODEL_TO_PORT
-
 app = Flask(__name__)
 api = Api(app)
 
