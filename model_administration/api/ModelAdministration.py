@@ -2,7 +2,7 @@ import requests
 
 from flask_restful import Resource, reqparse
 
-from api import LOCALHOST, MODEL_TO_ENDPOINT
+from model_administration import LOCALHOST, MODEL_TO_ENDPOINT
 
 
 model_arg = "model"

@@ -10,7 +10,7 @@ ENDPOINT = "/skin-cancer"
 BASE_URL = BASE + ":" + str(PORT)
 ENDPOINT_URL = BASE_URL + ENDPOINT
 
-image = ('''
+image = """
 iVBORw0KGgoAAAANSUhEUgAAAFwAAABXCAIAAAAGSrXMAAAAAXNSR0IArs4c6QAAAANzQklUCAgI
 2+FP4AAAIABJREFUeJyFvF2PJFlyLGbmfiKzqrp7ZnaGuySXl5AI3PsoCHoQIOgX6Ek/Ur9Gj3rj
 iwBRV5cgLrnL2Znp+siI42Z68BNZNUtCSgwG1d2ZlREe/mFubn745X/7L8jxt3/6v5/fXv/H//N/
@@ -193,12 +193,13 @@ y8djt+ecCAazgfiYsbchAsB766kqwhHqHIlQYBD0WqmNuzhnaW7uxvL7BN+2/2wZ7TyyCbUUuuuK
 QZk2g6yPNnznYnqqafW03AUqA4zIiBgxgqNPPOg9wCn16UkwZlWLEjr8Va1fFSMiWzOhjHUka0SM
 qeOUdVes/kw0wB1An0/S09je3Oi4uAuem/xsVAYAphXGOnysg/luFICdT6pqgoQSDPaZbwPsHqUF
 qHeokqtsze43V2cYESO32LK19jKrt0EESRCLtqqVRNlba328V60BW6vr7qhSHxY3/1/6nYKkaMs2
-JwAAAABJRU5ErkJggg==''')
+JwAAAABJRU5ErkJggg=="""
 
 params = {"image": image}
-headers = {'Content-type': 'application/json'}
+headers = {"Content-type": "application/json"}
 response = requests.get(ENDPOINT_URL, params=params, headers=headers)
 print(response.json())
+
 
 @pytest.mark.parameterize(["image"], [SKIN_CANCER_IMAGE])
 def test_image(image):

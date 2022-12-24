@@ -199,6 +199,7 @@ headers = {"Content-type": "application/json"}
 response = requests.get(ENDPOINT_URL, params=params, headers=headers)
 print(response.json())
 
+
 @pytest.mark.parameterize(["image"], [IMAGE])
 def test_image(image):
     params = {"image": image}
