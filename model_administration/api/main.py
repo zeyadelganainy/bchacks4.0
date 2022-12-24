@@ -1,8 +1,8 @@
-from api import LOCALHOST
-from api.ModelAdministration import ModelAdministration
-
 from flask import Flask
 from flask_restful import Api
+
+from model_administration import LOCALHOST
+from model_administration.api.ModelAdministration import ModelAdministration
 
 app = Flask(__name__)
 api = Api(app)

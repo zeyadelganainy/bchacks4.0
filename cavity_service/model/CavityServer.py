@@ -2,10 +2,10 @@ import base64
 import io
 
 from flask_restful import Resource, reqparse
-
-from CavityModel import CavityModel
-
 from PIL import Image
+
+from cavity_service.model.CavityModel import CavityModel
+
 
 cavity_model = CavityModel()
 
