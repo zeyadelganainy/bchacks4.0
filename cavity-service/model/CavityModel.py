@@ -32,8 +32,8 @@ def get_data(folder, im_width, label):
 
 
 def get_training_data():
-    folder_training_0 = current_directory / "data" / "training" / "without_caries"
-    folder_training_1 = current_directory / "data" / "training" / "caries"
+    folder_training_0 = current_directory / "data" / "training" / "no_cavities"
+    folder_training_1 = current_directory / "data" / "training" / "cavities"
 
     # training
     x_train_0 = np.empty((len(os.listdir(folder_training_0)), im_width**2))
@@ -51,8 +51,8 @@ def get_training_data():
 
 
 def get_testing_data():
-    folder_testing_0 = current_directory / "data" / "testing" / "without_caries"
-    folder_testing_1 = current_directory / "data" / "testing" / "caries"
+    folder_testing_0 = current_directory / "data" / "testing" / "no_cavities"
+    folder_testing_1 = current_directory / "data" / "testing" / "cavities"
 
     # # # #testing
     x_test_0 = np.empty((len(os.listdir(folder_testing_0)), im_width**2))
