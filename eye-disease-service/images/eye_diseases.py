@@ -1,0 +1,2 @@
+EYE_DISEASE = ""
+NO_EYE_DISEASE = ""
