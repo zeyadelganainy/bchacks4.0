@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from cavity_server.model.CavityServer import CavityServer
+from cavity_service.model.CavityServer import CavityServer
 
 app = Flask(__name__)
 api = Api(app)
