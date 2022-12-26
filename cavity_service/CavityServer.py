@@ -4,10 +4,11 @@ import io
 from flask_restful import Resource, reqparse
 from PIL import Image
 
+from cavity_service import NEW_MODEL
 from cavity_service.model.CavityModel import CavityModel
 
 
-cavity_model = CavityModel()
+cavity_model = CavityModel(NEW_MODEL)
 
 image_arg = "image"
 

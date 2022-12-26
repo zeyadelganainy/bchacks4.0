@@ -1,13 +1,11 @@
 from flask import Flask
 from flask_restful import Api
 
-from cavity_service.model.CavityServer import CavityServer
+from cavity_service import ENDPOINT, PORT
+from cavity_service.CavityServer import CavityServer
 
 app = Flask(__name__)
 api = Api(app)
-
-ENDPOINT = "/cavity"
-PORT = 5003
 
 api.add_resource(CavityServer, ENDPOINT)
 
