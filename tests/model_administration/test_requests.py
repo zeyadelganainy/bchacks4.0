@@ -3,7 +3,7 @@ import requests
 from typing import Tuple
 
 from model_administration import LOCALHOST, MODEL_TO_ENDPOINT, MODELS
-from model_administration.api.ModelAdministration import ModelAdministration
+from model_administration.ModelAdministrationServer import ModelAdministration
 
 from tests.cavity_service.images.examples import CAVITY, NO_CAVITY
 from tests.eye_disease_service.images.examples import (
