@@ -45,7 +45,7 @@ public class httpRequester extends AppCompatActivity {
         int s = bundle.getInt("selection");
         String image = bundle.getString("image");
         switch(s){
-            case 1: model = "eye-disease"; break;
+            case 1: model = "optometrist"; break;
             case 2: model = "cavity"; break;
             case 3: model = "skin-cancer"; break;
             default:

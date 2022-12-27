@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  reception:
+    container_name: reception
+    image: physicAIn-base:latest
+    ports:
+      - "4000:4000"
+  admin:
+    container_name: admin
+    image: physicAIn-base:latest
+    ports:
+      - "5000:5000"
+  skin:
+    container_name: dermatologist
+    image: physicAIn-base:latest
+    ports:
+      - "5001:5001"
+  eye:
+    container_name: optometrist
+    image: physicAIn-base:latest
+    ports:
+      - "5002:5002"
+  dentist:
+    container_name: dentist
+    image: physicAIn-base:latest
+    ports:
+      - "5003:5003"
