@@ -3,7 +3,7 @@ from flask_restful import Api
 
 from model_administration import ENDPOINT, PORT
 from model_administration.ModelAdministrationServer import (
-    ModelAdministrationServer
+    ModelAdministrationServer,
 )
 
 app = Flask(__name__)
