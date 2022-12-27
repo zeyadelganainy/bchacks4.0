@@ -11,17 +11,17 @@ services:
     ports:
       - "5000:5000"
   skin:
-    container_name: skin-cancer
+    container_name: dermatologist
     image: physicAIn-base:latest
     ports:
       - "5001:5001"
   eye:
-    container_name: eye-disease
+    container_name: optometrist
     image: physicAIn-base:latest
     ports:
       - "5002:5002"
-  cavity:
-    container_name: cavity
+  dentist:
+    container_name: dentist
     image: physicAIn-base:latest
     ports:
       - "5003:5003"

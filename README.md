@@ -10,13 +10,13 @@ More details will be provided tomorrow.
 
 [^1]: https://www.kaggle.com/datasets/pushkar34/teeth-dataset.
 [^2]: https://www.kaggle.com/datasets/farjanakabirsamanta/skin-cancer-dataset.
-[^3]: https://www.kaggle.com/datasets/kondwani/eye-disease-dataset
+[^3]: https://www.kaggle.com/datasets/kondwani/optometrist-dataset
 
 ### Endpoints and ports
 - model-administration: /admin          (port=5000)
-- skin-cancer-service:  /skin-cancer    (port=5001)
-- eye-disease-service:  /a-eye          (port=5002)
-- cavity-service:       /cavity         (port=5003)
+- dermatologist:  /dermatologist    (port=5001)
+- optometrist:  /a-eye          (port=5002)
+- dentist:       /dentist         (port=5003)
 
 ### For Python Developers
 Run the following command:
